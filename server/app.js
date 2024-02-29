@@ -8,6 +8,14 @@ const session = require("express-session");
 const passport = require("passport");
 const OAuth2Strategy = require("passport-google-oauth2").Strategy;
 const userdb = require("./model/userSchema")
+
+
+const User = require('./models/user');
+const Food = require('./models/food');
+const Order = require('./models/order');
+const Feedback = require('./models/feedback');
+const ChartData = require('./models/chartData');
+
 const authRoutes =require('./routers/')
 const foodRoutes = require('./routes/food')
 const orderRoutes = require('./routes/order');
@@ -17,6 +25,13 @@ const chartRoutes = require('./routes/chart');
 
 const clientid = "313188945982-fq2bvitbaohpt1l105or19o54q7ih2ni.apps.googleusercontent.com"
 const clientsecret = "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"
+
+
+app.use('/auth', User);
+app.use('/food', Food);
+app.use('/order', Order);
+app.use('/feedback', Feedback);
+app.use('/chart', ChartData);
 
 app.use('/auth', authRoutes);
 app.use('/food', foodRoutes);
